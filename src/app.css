@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+:root {
+    --font-family: 'Manrope', sans-serif;
+
+    --text-one: hsl(206, 100%, 94%);
+    --surface-one: hsl(206, 100%, 94%);
+
+    --primary: hsl(206, 100%, 81%);
+
+    --secondary: hsl(208, 75%, 82%);
+
+    --tertiary: hsla(205, 91%, 69%, 0.15);
+
+    --background-one: hsl(252, 10%, 11%);
+    --surface-two: hsl(252, 10%, 11%);
+
+    --surface-three: hsl(210, 14%, 17%);
+
+    --surface-four: hsl(212, 19%, 19%);
+    --text-two: hsl(212, 19%, 19%);
+
+    --border: hsl(221, 17%, 26%);
+    --surface-five: hsl(221, 17%, 26%);
+
+    --text-three: hsl(226, 48%, 18%);
+
+    --text-four: hsl(208, 30%, 75%);
+    --surface-six: hsl(208, 30%, 75%);
+
+    --surface-seven: hsl(230, 9%, 13%);
+
+    --surface-eight: hsl(240, 9%, 13.5%);
+
+    --surface-nine: hsl(230, 9.5%, 17.5%);
+
+    --red-one: hsl(333, 84%, 62%);
+    --red-two: hsl(357, 74%, 60%);
+
+    --yellow-one: hsl(59, 100%, 72%);
+
+    --bezier-one: ease-out;
+    --drop-shadow-one: 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12),
+        0px 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: var(--font-family);
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    background-clip: content-box;
+    border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--surface-five);
+}
+
+::selection {
+    background-color: var(--tertiary);
+}
+
+/* ##### HEADINGS ##### */
+
+h1 {
+    color: var(--text-one);
+    line-height: 4rem;
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+h2 {
+    color: var(--text-four);
+    font-size: 2.5rem;
+    letter-spacing: -0.04rem;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.25rem;
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+h4 {
+    color: var(--secondary);
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.02rem;
+    line-height: 2rem;
+}
+
+h5 {
+    color: var(--text-four);
+    font-weight: 400;
+    font-size: 0.9rem;
+    letter-spacing: 0.02rem;
+}
+
+h6 {
+    color: var(--text-four);
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+p {
+    color: var(--text-four);
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.02rem;
+    line-height: 1.75rem;
+}
+
+/* ##### MEDIA QUERIES ##### */
+
+@media screen and (max-width: 767px) {
+    h1 {
+        font-size: 2.6rem;
+        line-height: 3.75rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+}
