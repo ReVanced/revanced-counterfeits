@@ -10,7 +10,7 @@
 	const { data: about } = useSWR<BackendAbout>(`${RV_API_URL}/v4/about`);
 	let referrer: string | null = $state(null);
 
-	onMount(async () => {
+	onMount(() => {
 		referrer = document.referrer || window.location.href;
 	});
 </script>
