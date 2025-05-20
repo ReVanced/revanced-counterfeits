@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read
+      contents: write
       deployments: write
       pull-requests: write
 
@@ -54,8 +54,14 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy build --project-name=revanced-counterfeits
 
-      - name: Comment deployment URL
+      - name: Comment deployment URL on Pull Request
         if: ${{ github.event_name == 'pull_request' }}
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: Deployed at ${{ steps.deploy.outputs.deployment-url }}.
+
+      - name: Comment deployment URL on Commit
+        if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
+        uses: peter-evans/commit-comment@v3
+        with:
+          body: Deployed at ${{ steps.deploy.outputs.deployment-url }}.
