@@ -1,54 +1,60 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { useSWR } from 'sswr';
 
-	let referrer: string | undefined;
+	import type { BackendAbout } from '$types';
+	import { RV_API_URL } from '$env/static/public';
 
-	onMount(() => {
-		referrer = document.referrer;
+	import Footer from '$components/organisms/Footer.svelte';
+
+	const { data: about } = useSWR<BackendAbout>(`${RV_API_URL}/v4/about`);
+	let referrer: string | null = $state(null);
+
+	onMount(async () => {
+		referrer = document.referrer || window.location.href;
 	});
 </script>
 
 <svelte:head>
 	<title>ReVanced - Counterfeit notice</title>
 </svelte:head>
+
 <main>
 	<div id="content">
-		<section style="text-align: right;">
+		<section class="hero">
 			<h1>
 				You may be a victim of<br />
-				<span class="good"><a href="https://revanced.app">ReVanced</a></span>
+				<span class="good"><a href={$about?.socials[0].url}>ReVanced</a></span>
 				<span class="bad">counterfeit</span>
 			</h1>
 			<p>
-				If you just landed on this page, it means you may have been redirected here from <span
-					class="bad">counterfeit</span
-				>
+				If you just landed on this page, it means you may have been redirected here from
+				<span class="bad">counterfeit</span>
 				website.
 			</p>
 		</section>
 		<section>
 			<h2>What is going on?</h2>
 			<p>
-				Some counterfeiters have been trying to impersonate <span class="good"
-					><a href="https://revanced.app">ReVanced</a></span
-				>
+				Some counterfeiters have been trying to impersonate
+				<span class="good"><a href={$about?.socials[0].url}>ReVanced</a></span>
 				by creating fake websites and took advantage of this by creating
 				<span class="bad">counterfeit</span>
 				versions, which are designed to look official but are not.
 			</p>
 			<p>
-				<span class="good"><a href="https://revanced.app">ReVanced</a></span> has aquired a couple
+				<span class="good"><a href={$about?.socials[0].url}>ReVanced</a></span> has aquired a couple
 				of domains that were previously used by counterfeiters via a
-				<a href="https://www.wipo.int/amc/en/domains/guide/#What_is_the"
-					>Uniform Domain Name Dispute Resolution</a
-				>.
+				<a href="https://www.wipo.int/amc/en/domains/guide/#What_is_the">
+					Uniform Domain Name Dispute Resolution
+				</a>.
 				<br />
 				The counterfeit domains are now redirecting to this page. If you were redirected here, it means
 				you may have been a victim of counterfeit.
 			</p>
-			<a href="https://revanced.app"
-				>Visit the official website at <span class="good">https://revanced.app</span></a
-			>
+			<a href={$about?.socials[0].url}>
+				Visit the official website at <span class="good">{$about?.socials[0].url}</span>
+			</a>
 		</section>
 
 		<section>
@@ -59,19 +65,14 @@
 			</p>
 			<ul>
 				<li>
-					You visited counterfeit website that is not <span class="good"
-						><a href="https://revanced.app">revanced.app</a></span
-					>
-					{#if referrer}
-						(PS: You just came from <span class="probably-bad">{referrer}</span>).
-					{:else}
-						.
-					{/if}
+					You visited counterfeit website that is not
+					<span class="good"><a href={$about?.socials[0].url}>revanced.app</a></span>
+					(PS: You just came from <span class="probably-bad">{referrer}</span>).
 				</li>
 				<li>
 					You downloaded ReVanced from any website
 					<strong>other than</strong>
-					<span class="good"><a href="https://revanced.app">revanced.app</a></span>.
+					<span class="good"><a href={$about?.socials[0].url}>revanced.app</a></span>.
 				</li>
 				<li>You used a pre-patched APK not obtained officially.</li>
 			</ul>
@@ -84,18 +85,17 @@
 		<section>
 			<h2>Known counterfeits</h2>
 			<p>
-				These are the known counterfeit domains that have been used to impersonate <span
-					class="good"><a href="https://revanced.app">ReVanced</a></span
-				>.
+				These are the known counterfeit domains that have been used to impersonate
+				<span class="good"><a href={$about?.socials[0].url}>ReVanced</a></span>.
 			</p>
 			<ul>
 				<li>
 					<span class="bad">revanced.net</span>(Now redirects to
-					<span class="good"><a href="https://revanced.app">revanced.app</a></span>)
+					<span class="good"><a href={$about?.socials[0].url}>revanced.app</a></span>)
 				</li>
 				<li>
 					<span class="bad">revanced.dev</span> (Now redirects to
-					<span class="good"><a href="https://revanced.app">revanced.app</a></span>)
+					<span class="good"><a href={$about?.socials[0].url}>revanced.app</a></span>)
 				</li>
 				<li><span class="bad">revanced.to</span></li>
 				<li><span class="bad">revancedextended.com</span></li>
@@ -110,7 +110,7 @@
 		<section>
 			<h2>I downloaded counterfeit, what should I do?</h2>
 			<p>
-				If you downloaded a <span class="good"><a href="https://revanced.app">ReVanced</a></span> version
+				If you downloaded a <span class="good"><a href={$about?.socials[0].url}>ReVanced</a></span> version
 				from one of the websites listed above or any unofficial source, you are strongly recommend to:
 			</p>
 			<ul>
@@ -119,54 +119,28 @@
 				<li>Change passwords for any accounts accessed while using the counterfeit app.</li>
 				<li>Run a full security check on your device and accounts.</li>
 				<li>
-					<a href="https://revanced.app"
-						>Visit the official website at <span class="good">https://revanced.app</span></a
-					> and get the official version.
+					<a href={$about?.socials[0].url}>
+						Visit the official website at <span class="good">{$about?.socials[0].url}</span>
+					</a> and get the official version.
 				</li>
 			</ul>
 		</section>
 		<section>
 			<h2>Official links</h2>
-			<!-- Use ReVanced API here -->
 			<ul>
-				<li>
-					<strong>Website:</strong> <a class="good" href="https://revanced.app">revanced.app</a>
-				</li>
-				<li>
-					<strong>GitHub:</strong>
-					<a class="good" href="https://github.com/revanced">github.com/revanced</a>
-				</li>
-				<li>
-					<strong>Discord:</strong>
-					<a class="good" href="https://revanced.app/discord">revanced.app/discord</a>
-				</li>
-				<li>
-					<strong>Reddit:</strong>
-					<a class="good" href="https://reddit.com/r/revancedapp">reddit.com/r/revancedapp</a>
-				</li>
-				<li>
-					<strong>Twitter:</strong>
-					<a class="good" href="https://twitter.com/revancedapp">@revancedapp</a>
-				</li>
-				<li>
-					<strong>Telegram:</strong>
-					<a class="good" href="https://t.me/app_revanced">@app_revanced</a>
-				</li>
-				<li>
-					<strong>YouTube:</strong>
-					<a class="good" href="https://youtube.com/@ReVanced">@ReVanced</a>
-				</li>
-				<li>
-					<strong>Donate:</strong>
-					<a class="good" href="https://revanced.app/donate">revanced.app/donate</a>
-				</li>
+				{#if $about}
+					{#each $about.socials as social}
+						<li>
+							<strong>{social.name}:</strong> <a class="good" href={social.url}>{social.url}</a>
+						</li>
+					{/each}
+				{/if}
 			</ul>
 		</section>
 	</div>
 </main>
-<footer>
-	<!-- Use ReVanced API here -->
-</footer>
+
+<Footer />
 
 <style>
 	:root {
@@ -195,6 +169,10 @@
 	section,
 	p {
 		margin: 10px 0;
+	}
+
+	.hero {
+		text-align: center;
 	}
 
 	#content {

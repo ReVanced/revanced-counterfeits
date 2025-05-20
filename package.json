@@ -30,5 +30,10 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint ."
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@iconify-json/mdi": "^1.2.3",
+		"sswr": "^2.2.0",
+		"unplugin-icons": "^22.1.0"
+	}
 }
