@@ -8,9 +8,7 @@
 	onMount(() => {
 		window.dataLayer = window.dataLayer || [];
 
-		function gtag(...args: any[]) {
-			window.dataLayer.push(...args);
-		}
+		const gtag = (...args: any[]) => window.dataLayer.push(...args);
 
 		gtag('js', new Date());
 		gtag('config', RV_GOOGLE_TAG_MANAGER_ID);
