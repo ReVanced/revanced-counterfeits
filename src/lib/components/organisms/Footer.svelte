@@ -23,11 +23,13 @@
 
 			<section class="links-container">
 				<FooterSection title="Pages">
-					<li><Button type="text" href="/">Home</Button></li>
-					<li><Button type="text" href="/download">Download</Button></li>
-					<li><Button type="text" href="/patches">Patches</Button></li>
-					<li><Button type="text" href="/contributors">Contributors</Button></li>
-					<li><Button type="text" href="/donate">Donate</Button></li>
+					<li><Button type="text" href="{$about?.socials[0].url}/">Home</Button></li>
+					<li><Button type="text" href="{$about?.socials[0].url}/download">Download</Button></li>
+					<li><Button type="text" href="{$about?.socials[0].url}/patches">Patches</Button></li>
+					<li>
+						<Button type="text" href="{$about?.socials[0].url}/contributors">Contributors</Button>
+					</li>
+					<li><Button type="text" href="{$about?.socials[0].url}/donate">Donate</Button></li>
 				</FooterSection>
 
 				{#if $about}
@@ -45,7 +47,7 @@
 		<div class="footer-bottom">
 			<div id="logo-name"><span>Re</span>Vanced</div>
 
-			<Button type="text" href="/donate">Donate</Button>
+			<Button type="text" href="{$about?.socials[0].url}/donate">Donate</Button>
 			{#if $about}
 				<Button type="text" href="mailto:{$about.contact.email}">Email</Button>
 			{/if}
