@@ -6,6 +6,7 @@
 	import { RV_API_URL } from '$env/static/public';
 
 	import Footer from '$components/organisms/Footer.svelte';
+	import Embed from '$components/molecules/Embed.svelte';
 
 	const { data: about } = useSWR<BackendAbout>(`${RV_API_URL}/v4/about`);
 	let referrer: string | null = $state(null);
@@ -18,6 +19,13 @@
 <svelte:head>
 	<title>ReVanced - Counterfeit notice</title>
 </svelte:head>
+
+<Embed
+	title="ReVanced - Counterfeit notice"
+	description="You may be a victim of ReVanced counterfeit. Learn more about it here."
+	websiteUrl="https://revanced.app"
+	image="https://revanced.app/logo.png"
+/>
 
 <main>
 	<div id="content">
