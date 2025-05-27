@@ -10,6 +10,11 @@
 	import Button from '$components/atoms/Button.svelte';
 
 	const { data: about } = useSWR<BackendAbout>(`${RV_API_URL}/v4/about`);
+	let websiteUrl: string | null = $state(null);
+
+	$effect(() => {
+		if ($about) websiteUrl = $about.socials[0].url;
+	});
 </script>
 
 <SquigglyDivider />
@@ -23,13 +28,13 @@
 
 			<section class="links-container">
 				<FooterSection title="Pages">
-					<li><Button type="text" href="{$about?.socials[0].url}/">Home</Button></li>
-					<li><Button type="text" href="{$about?.socials[0].url}/download">Download</Button></li>
-					<li><Button type="text" href="{$about?.socials[0].url}/patches">Patches</Button></li>
+					<li><Button type="text" href="{websiteUrl}/">Home</Button></li>
+					<li><Button type="text" href="{websiteUrl}/download">Download</Button></li>
+					<li><Button type="text" href="{websiteUrl}/patches">Patches</Button></li>
 					<li>
-						<Button type="text" href="{$about?.socials[0].url}/contributors">Contributors</Button>
+						<Button type="text" href="{websiteUrl}/contributors">Contributors</Button>
 					</li>
-					<li><Button type="text" href="{$about?.socials[0].url}/donate">Donate</Button></li>
+					<li><Button type="text" href="{websiteUrl}/donate">Donate</Button></li>
 				</FooterSection>
 
 				{#if $about}
@@ -47,7 +52,7 @@
 		<div class="footer-bottom">
 			<div id="logo-name"><span>Re</span>Vanced</div>
 
-			<Button type="text" href="{$about?.socials[0].url}/donate">Donate</Button>
+			<Button type="text" href="{websiteUrl}/donate">Donate</Button>
 			{#if $about}
 				<Button type="text" href="mailto:{$about.contact.email}">Email</Button>
 			{/if}
