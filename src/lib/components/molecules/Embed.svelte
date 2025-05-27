@@ -1,6 +1,12 @@
 <script lang="ts">
-	type Props = { title: string; image?: string; description?: string; websiteUrl?: string };
-	let { title, image, description, websiteUrl }: Props = $props();
+	type Props = {
+		title: string;
+		image?: string;
+		description?: string;
+		websiteUrl?: string;
+		themeColor?: string;
+	};
+	let { title, image, description, websiteUrl, themeColor }: Props = $props();
 </script>
 
 <svelte:head>
@@ -9,7 +15,10 @@
 	<meta property="twitter:title" content={title} />
 
 	<meta property="og:type" content="website" />
-	<meta property="twitter:card" content="summary_large_image" />
+
+	{#if themeColor}
+		<meta name="theme-color" content={themeColor} />
+	{/if}
 
 	{#if description}
 		<meta name="description" content={description} />

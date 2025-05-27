@@ -30,6 +30,7 @@
 	description="You may be a victim of ReVanced counterfeit. Learn more about it here."
 	websiteUrl="https://revanced.app"
 	image="https://revanced.app/logo.png"
+	themeColor="#9FD5FF"
 />
 
 <main>
