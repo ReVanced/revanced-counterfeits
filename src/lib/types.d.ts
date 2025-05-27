@@ -27,3 +27,14 @@ export type BackendAbout = {
 	socials: BackendAboutUrl[];
 	status: string;
 };
+
+export enum SpecialTargetValues {
+	SELF = '_self',
+	BLANK = '_blank',
+	PARENT = '_parent',
+	TOP = '_top'
+}
+
+export type Prettify<T> = {
+	[K in keyof T]: T[K];
+} & {};
