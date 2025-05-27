@@ -17,7 +17,7 @@
 	});
 
 	onMount(() => {
-		referrer = document.referrer || window.location.href;
+		referrer = document.referrer;
 	});
 </script>
 
@@ -81,7 +81,9 @@
 				<li>
 					You visited counterfeit website that is not
 					<span class="good"><a href={websiteUrl}>revanced.app</a></span>
-					(PS: You just came from <span class="probably-bad">{referrer}</span>).
+					{#if referrer}
+						(PS: You just came from <span class="probably-bad">{referrer}</span>)
+					{/if}.
 				</li>
 				<li>
 					You downloaded ReVanced from any website
