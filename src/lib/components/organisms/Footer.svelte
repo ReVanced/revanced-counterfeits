@@ -2,7 +2,7 @@
 	import { RV_DMCA_GUID } from '$env/static/public';
 	import type { BackendAbout } from '$types';
 
-	import DmcaBadge from '$components/atoms/DMCABadge.svelte';
+	import DmcaBadge from '$components/atoms/DmcaBadge.svelte';
 	import SquigglyDivider from '$components/atoms/SquigglyDivider.svelte';
 	import FooterSection from '$components/molecules/FooterSection.svelte';
 	import Button from '$components/atoms/Button.svelte';
