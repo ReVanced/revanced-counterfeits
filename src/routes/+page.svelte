@@ -57,7 +57,7 @@
 				versions, which are designed to look official but are not.
 			</p>
 			<p>
-				<span class="good"><a href={websiteUrl}>ReVanced</a></span> has aquired a couple of domains
+				<span class="good"><a href={websiteUrl}>ReVanced</a></span> has acquired a couple of domains
 				that were previously used by counterfeiters via a
 				<a href="https://www.wipo.int/amc/en/domains/guide/#What_is_the">
 					Uniform Domain Name Dispute Resolution
@@ -79,7 +79,7 @@
 			</p>
 			<ul>
 				<li>
-					You visited counterfeit website that is not
+					You visited a counterfeit website that is not
 					<span class="good"><a href={websiteUrl}>revanced.app</a></span>
 					{#if referrer}
 						(PS: You just came from <span class="probably-bad">{referrer}</span>)
@@ -121,7 +121,7 @@
 			<h2>I downloaded counterfeit, what should I do?</h2>
 			<p>
 				If you downloaded a <span class="good"><a href={websiteUrl}>ReVanced</a></span> version from
-				one of the websites listed above or any unofficial source, you are strongly recommend to:
+				one of the websites listed above or any unofficial source, you are strongly recommended to:
 			</p>
 			<ul>
 				<li>Uninstall the counterfeit version.</li>
