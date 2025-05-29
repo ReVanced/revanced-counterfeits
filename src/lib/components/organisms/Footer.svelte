@@ -7,7 +7,7 @@
 	import FooterSection from '$components/molecules/FooterSection.svelte';
 	import Button from '$components/atoms/Button.svelte';
 
-	type Props = { about: BackendAbout | undefined; websiteUrl: string | null };
+	type Props = { about?: BackendAbout; websiteUrl?: string | null };
 	let { about, websiteUrl }: Props = $props();
 </script>
 
@@ -45,7 +45,7 @@
 	<div class="footer-bottom">
 		<div id="logo-name"><span>Re</span>Vanced</div>
 
-		<a href={websiteUrl}><div>Donate</div></a>
+		<a href="{websiteUrl}/donate"><div>Donate</div></a>
 		{#if about}
 			<a href="mailto:{about.contact.email}"><div>Email</div></a>
 		{/if}
