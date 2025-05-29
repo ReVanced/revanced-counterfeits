@@ -28,8 +28,8 @@
 <Embed
 	title="ReVanced - Counterfeit notice"
 	description="You may be a victim of ReVanced counterfeit. Learn more about it here."
-	websiteUrl="https://revanced.app"
-	image="https://revanced.app/logo.png"
+	{websiteUrl}
+	image={`${websiteUrl}/logo.png`}
 	themeColor="#9FD5FF"
 />
 
@@ -42,11 +42,11 @@
 				<span class="bad">counterfeit</span>
 			</h1>
 			<p>
-				If you just landed on this page, it means you may have been redirected here from
-				<span class="bad">counterfeit</span>
-				website.
+				If you just landed on this page, you may have been redirected here from a
+				<span class="bad">counterfeit</span> website.
 			</p>
 		</section>
+
 		<section>
 			<h2>What is going on?</h2>
 			<p>
@@ -98,6 +98,7 @@
 				probably <span class="bad">counterfeit</span>. If unsure, check the official links below.
 			</p>
 		</section>
+
 		<section>
 			<h2>Known counterfeits</h2>
 			<p>
@@ -105,24 +106,17 @@
 				<span class="good"><a href={websiteUrl}>ReVanced</a></span>.
 			</p>
 			<ul>
-				<li>
-					<span class="bad">revanced.net</span>(Now redirects to
-					<span class="good"><a href={websiteUrl}>revanced.app</a></span>)
-				</li>
-				<li>
-					<span class="bad">revanced.dev</span> (Now redirects to
-					<span class="good"><a href={websiteUrl}>revanced.app</a></span>)
-				</li>
-				<li><span class="bad">revanced.to</span></li>
-				<li><span class="bad">revancedextended.com</span></li>
-				<li><span class="bad">revancedextended.io</span></li>
-				<li><span class="bad">revancedapp.download</span></li>
-				<li><span class="bad">revancedapps.com</span></li>
-				<li><span class="bad">revancedapk.org</span></li>
-				<li><span class="bad">revancedapp.io</span></li>
-				<li><span class="bad">revancedapk.net</span></li>
+				{#each ['revanced.net', 'revanced.dev', 'revanced.to', 'revancedextended.com', 'revancedextended.io', 'revancedapp.download', 'revancedapps.com', 'revancedapk.org', 'revancedapp.io', 'revancedapk.net'] as domain, i}
+					<li>
+						<span class="bad">{domain}</span>
+						{#if ['revanced.net', 'revanced.dev'].includes(domain)}
+							(Now redirects to <span class="good"><a href={websiteUrl}>revanced.app</a></span>)
+						{/if}
+					</li>
+				{/each}
 			</ul>
 		</section>
+
 		<section>
 			<h2>I downloaded counterfeit, what should I do?</h2>
 			<p>
@@ -131,7 +125,6 @@
 			</p>
 			<ul>
 				<li>Uninstall the counterfeit version.</li>
-
 				<li>Change passwords for any accounts accessed while using the counterfeit app.</li>
 				<li>Run a full security check on your device and accounts.</li>
 				<li>
@@ -141,14 +134,13 @@
 				</li>
 			</ul>
 		</section>
+
 		<section>
 			<h2>Official links</h2>
 			<ul>
 				{#if $about}
-					{#each $about.socials as social}
-						<li>
-							<strong>{social.name}:</strong> <a class="good" href={social.url}>{social.url}</a>
-						</li>
+					{#each $about.socials as { name, url }}
+						<li><strong>{name}:</strong> <a class="good" href={url}>{url}</a></li>
 					{/each}
 				{/if}
 			</ul>
@@ -156,9 +148,9 @@
 	</div>
 </main>
 
-<Footer />
+<Footer about={$about} {websiteUrl} />
 
-<style>
+<style lang="scss">
 	:root {
 		background-color: var(--background-one);
 		color: var(--text-four);
@@ -181,9 +173,6 @@
 		padding: 1rem;
 		border-radius: 1rem;
 		background-color: var(--surface-eight);
-	}
-	section,
-	p {
 		margin: 10px 0;
 	}
 
@@ -218,15 +207,15 @@
 		color: #1f62ff;
 		border-bottom: 1px solid #1f62ff;
 		box-shadow: 0 0 5px #1f62ff;
-	}
 
-	.good:hover {
-		background-color: #0846d6;
-		color: #ffffff;
-	}
+		&:hover {
+			background-color: #0846d6;
+			color: #ffffff;
+		}
 
-	.good::before {
-		content: '✅ ';
+		&::before {
+			content: '✅ ';
+		}
 	}
 
 	.bad {
@@ -235,10 +224,10 @@
 		border-bottom: 1px solid #ff0000;
 		box-shadow: 0 0 5px #ff0000;
 		cursor: not-allowed;
-	}
 
-	.bad::before {
-		content: '☠️ ';
+		&::before {
+			content: '☠️ ';
+		}
 	}
 
 	.probably-bad {
@@ -246,18 +235,17 @@
 		background-color: #ff980055;
 		border-bottom: 1px solid #ff9800;
 		box-shadow: 0 0 5px #ff9800;
-	}
 
-	.probably-bad::before {
-		content: '⚠️ ';
+		&::before {
+			content: '⚠️ ';
+		}
 	}
-
 	a {
 		color: #1f62ff;
 		text-decoration: none;
-	}
 
-	a:hover {
-		text-decoration: underline;
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 </style>

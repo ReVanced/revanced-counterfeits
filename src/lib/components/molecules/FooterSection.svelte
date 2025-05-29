@@ -33,8 +33,8 @@
 		</ul>
 	{/if}
 </div>
- 
-<style>
+
+<style lang="scss">
 	span {
 		list-style: none;
 		color: var(--text-four);
@@ -60,12 +60,12 @@
 		cursor: pointer;
 	}
 
-	.mobile-only:not(:last-child) {
-		border-bottom: 1px solid var(--border);
-	}
-
 	.mobile-only {
 		display: none;
+
+		&:not(:last-child) {
+			border-bottom: 1px solid var(--border);
+		}
 	}
 
 	.arrow {

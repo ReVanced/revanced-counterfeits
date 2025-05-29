@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount, type Snippet } from 'svelte';
 	import { RV_GOOGLE_TAG_MANAGER_ID } from '$env/static/public';
+	import '../app.css';
 
 	type Props = { children: Snippet };
 	let { children }: Props = $props();

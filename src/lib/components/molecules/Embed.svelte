@@ -3,7 +3,7 @@
 		title: string;
 		image?: string;
 		description?: string;
-		websiteUrl?: string;
+		websiteUrl: string | null;
 		themeColor?: string;
 	};
 	let { title, image, description, websiteUrl, themeColor }: Props = $props();

@@ -1,89 +1,89 @@
 <script lang="ts">
-	import { useSWR } from 'sswr';
-
-	import { RV_DMCA_GUID, RV_API_URL } from '$env/static/public';
+	import { RV_DMCA_GUID } from '$env/static/public';
 	import type { BackendAbout } from '$types';
 
-	import DmcaBadge from '$components/atoms/DmcaBadge.svelte';
+	import DmcaBadge from '$components/atoms/DMCABadge.svelte';
 	import SquigglyDivider from '$components/atoms/SquigglyDivider.svelte';
 	import FooterSection from '$components/molecules/FooterSection.svelte';
 	import Button from '$components/atoms/Button.svelte';
 
-	const { data: about } = useSWR<BackendAbout>(`${RV_API_URL}/v4/about`);
-	let websiteUrl: string | null = $state(null);
-
-	$effect(() => {
-		if ($about) websiteUrl = $about.socials[0].url;
-	});
+	type Props = { about: BackendAbout | undefined; websiteUrl: string | null };
+	let { about, websiteUrl }: Props = $props();
 </script>
 
 <SquigglyDivider />
 <footer>
-	<div class="footer-wrapper">
-		<div class="footer-top">
-			<section class="main-content">
-				<img src="/logo.svg" class="logo-image" alt="ReVanced Logo" />
-				<p>{$about?.about}</p>
-			</section>
+	<div class="footer-top">
+		<section class="main-content">
+			<img src="/logo.svg" class="logo-image" alt="ReVanced Logo" />
+			<p>{about?.about}</p>
+		</section>
 
-			<section class="links-container">
-				<FooterSection title="Pages">
-					<li><Button type="text" href="{websiteUrl}/">Home</Button></li>
-					<li><Button type="text" href="{websiteUrl}/download">Download</Button></li>
-					<li><Button type="text" href="{websiteUrl}/patches">Patches</Button></li>
-					<li>
-						<Button type="text" href="{websiteUrl}/contributors">Contributors</Button>
-					</li>
-					<li><Button type="text" href="{websiteUrl}/donate">Donate</Button></li>
+		<section class="links-container">
+			<FooterSection title="Pages">
+				<li><Button type="text" href="{websiteUrl}/">Home</Button></li>
+				<li><Button type="text" href="{websiteUrl}/download">Download</Button></li>
+				<li><Button type="text" href="{websiteUrl}/patches">Patches</Button></li>
+				<li>
+					<Button type="text" href="{websiteUrl}/contributors">Contributors</Button>
+				</li>
+				<li><Button type="text" href="{websiteUrl}/donate">Donate</Button></li>
+			</FooterSection>
+
+			{#if about}
+				<FooterSection title="Socials">
+					{#each about.socials as { name, url }}
+						<li>
+							<Button type="text" href={url} target="_blank">{name}</Button>
+						</li>
+					{/each}
 				</FooterSection>
-
-				{#if $about}
-					<FooterSection title="Socials">
-						{#each $about.socials as { name, url }}
-							<li>
-								<Button type="text" href={url} target="_blank">{name}</Button>
-							</li>
-						{/each}
-					</FooterSection>
-				{/if}
-			</section>
-		</div>
-
-		<div class="footer-bottom">
-			<div id="logo-name"><span>Re</span>Vanced</div>
-
-			<Button type="text" href="{websiteUrl}/donate">Donate</Button>
-			{#if $about}
-				<Button type="text" href="mailto:{$about.contact.email}">Email</Button>
 			{/if}
+		</section>
+	</div>
 
-			<DmcaBadge guid={RV_DMCA_GUID} />
-		</div>
+	<div class="footer-bottom">
+		<div id="logo-name"><span>Re</span>Vanced</div>
+
+		<a href={websiteUrl}><div>Donate</div></a>
+		{#if about}
+			<a href="mailto:{about.contact.email}"><div>Email</div></a>
+		{/if}
+
+		<DmcaBadge guid={RV_DMCA_GUID} />
 	</div>
 </footer>
 
-<style>
+<style lang="scss">
 	footer {
 		background-color: var(--background-one);
-	}
-
-	.footer-wrapper {
 		max-width: min(87%, 100rem);
 		padding: 5rem 0rem;
 		margin: 0 auto;
-	}
 
-	.footer-top {
-		display: flex;
-		gap: 8rem;
-		justify-content: space-between;
-		margin-bottom: 4rem;
-	}
+		.footer-top {
+			display: flex;
+			gap: 8rem;
+			justify-content: space-between;
+			margin-bottom: 4rem;
+		}
 
-	.footer-bottom {
-		display: flex;
-		gap: 2rem;
-		align-items: center;
+		.footer-bottom {
+			display: flex;
+			gap: 2rem;
+			align-items: center;
+
+			a {
+				color: var(--text-four);
+				font-weight: 600;
+				text-decoration: none;
+
+				:hover {
+					text-decoration: underline var(--secondary);
+					color: var(--text-one);
+				}
+			}
+		}
 	}
 
 	@media screen and (max-width: 768px) {
@@ -97,10 +97,10 @@
 		font-size: 1.4rem;
 		color: var(--text-one);
 		font-weight: 600;
-	}
 
-	#logo-name span {
-		color: var(--primary);
+		span {
+			color: var(--primary);
+		}
 	}
 
 	li {
