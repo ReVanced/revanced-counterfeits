@@ -34,7 +34,7 @@
 	{/if}
 </div>
 
-<style lang="scss">
+<style>
 	span {
 		list-style: none;
 		color: var(--text-four);

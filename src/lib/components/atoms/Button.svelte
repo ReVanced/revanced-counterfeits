@@ -62,7 +62,7 @@
 	</button>
 {/if}
 
-<style lang="scss">
+<style>
 	a,
 	button {
 		background-color: transparent;
@@ -94,7 +94,7 @@
 		color: var(--primary);
 		font-size: 0.95rem;
 		font-weight: 600;
-		
+
 		:hover {
 			text-decoration: underline var(--secondary);
 			color: var(--text-one);

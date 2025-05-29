@@ -150,7 +150,7 @@
 
 <Footer about={$about} {websiteUrl} />
 
-<style lang="scss">
+<style>
 	:root {
 		background-color: var(--background-one);
 		color: var(--text-four);

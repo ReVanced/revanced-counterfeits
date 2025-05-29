@@ -54,7 +54,7 @@
 	</div>
 </footer>
 
-<style lang="scss">
+<style>
 	footer {
 		background-color: var(--background-one);
 		max-width: min(87%, 100rem);
