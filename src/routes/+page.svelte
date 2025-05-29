@@ -10,7 +10,7 @@
 
 	const { data: about } = useSWR<BackendAbout>(`${RV_API_URL}/v4/about`);
 	let referrer: string | null = $state(null);
-	let websiteUrl: string | null = $state(null);
+	let websiteUrl: string = $state('https://revanced.app');
 
 	$effect(() => {
 		if ($about) websiteUrl = $about.socials[0].url;

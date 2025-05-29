@@ -7,7 +7,7 @@
 	import FooterSection from '$components/molecules/FooterSection.svelte';
 	import Button from '$components/atoms/Button.svelte';
 
-	type Props = { about?: BackendAbout; websiteUrl?: string | null };
+	type Props = { about?: BackendAbout | null; websiteUrl?: string | null };
 	let { about, websiteUrl }: Props = $props();
 </script>
 
