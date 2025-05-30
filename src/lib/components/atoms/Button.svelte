@@ -98,10 +98,6 @@
 		:hover {
 			text-decoration: underline var(--secondary);
 			color: var(--text-one);
-			.content {
-				text-decoration: underline;
-				text-decoration-color: currentColor;
-			}
 		}
 	}
 </style>
