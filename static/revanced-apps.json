@@ -3,7 +3,7 @@
     {
       "appName": "WARNING",
       "androidPackageName": "counterfeit.warning",
-      "latestVersionCode": "0.0",
+      "latestVersionCode": "99.99",
       "appShortDescription": "You are using a counterfeit version of ReVanced Manager.  It is highly recommended to uninstall this app and uninstall all apps you installed using this. To learn more, visit https://counterfeits.revanced.app ",
       "requireMicroG": false,
       "latestVersionUrl": "https://dummydomain",
