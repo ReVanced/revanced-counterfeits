@@ -1,0 +1,14 @@
+{
+  "packages": [
+    {
+      "appName": "FRAUD WARNING",
+      "androidPackageName": "dummy",
+      "latestVersionCode": "0.0",
+      "appShortDescription": "You are using a counterfeit version of ReVanced Manager.  It is highly recommended to uninstall this app and all apps you installed using this. To learn more, visit https://counterfeits.revanced.app ",
+      "requireMicroG": false,
+      "latestVersionUrl": "http://dummydomain",
+      "icon": "https://counterfeits.revanced.app/red-alert-icon.png",
+      "index": 0
+    }
+  ]
+}
