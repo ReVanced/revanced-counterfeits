@@ -1,22 +1,32 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { useSWR } from 'sswr';
 
 	import type { BackendAbout } from '$types';
-	import { RV_API_URL } from '$env/static/public';
+	import { RV_API_URL, RV_WEBSITE_URL } from '$env/static/public';
 
 	import Footer from '$components/organisms/Footer.svelte';
 	import Embed from '$components/molecules/Embed.svelte';
 
-	const { data: about } = useSWR<BackendAbout>(`${RV_API_URL}/v4/about`);
-	let referrer: string | null = $state(null);
-	let websiteUrl: string = $state('https://revanced.app');
+	let about = $state<BackendAbout | null>(null);
+	let websiteUrl = $state<string | undefined>(RV_WEBSITE_URL);
+	let referrer = $state<string | null>(null);
+
+	async function fetchAbout() {
+		const res = await fetch(`${RV_API_URL}/v4/about`);
+		if (res.ok) {
+			about = await res.json();
+		} else {
+			console.error('Failed to fetch about:', `HTTP ${res.status}`);
+		}
+	}
 
 	$effect(() => {
-		if ($about) websiteUrl = $about.socials[0].url;
+		if (about)
+			websiteUrl = about.socials.find((socials) => socials.name.toLowerCase() == 'website')?.url;
 	});
 
 	onMount(() => {
+		fetchAbout();
 		referrer = document.referrer;
 	});
 </script>
@@ -41,6 +51,7 @@
 				<span class="good"><a href={websiteUrl}>ReVanced</a></span>
 				<span class="bad">counterfeit</span>
 			</h1>
+			<br />
 			<p>
 				If you just landed on this page, you may have been redirected here from a
 				<span class="bad">counterfeit</span> website.
@@ -138,8 +149,8 @@
 		<section>
 			<h2>Official links</h2>
 			<ul>
-				{#if $about}
-					{#each $about.socials as { name, url }}
+				{#if about}
+					{#each about.socials as { name, url }}
 						<li><strong>{name}:</strong> <a class="good" href={url}>{url}</a></li>
 					{/each}
 				{/if}
@@ -148,7 +159,7 @@
 	</div>
 </main>
 
-<Footer about={$about} {websiteUrl} />
+<Footer {about} {websiteUrl} />
 
 <style>
 	:root {
@@ -204,7 +215,7 @@
 
 	.good {
 		background-color: #1f62ff55;
-		color: #1f62ff;
+		color: var(--primary);
 		border-bottom: 1px solid #1f62ff;
 		box-shadow: 0 0 5px #1f62ff;
 
@@ -241,7 +252,7 @@
 		}
 	}
 	a {
-		color: #1f62ff;
+		color: var(--primary);
 		text-decoration: none;
 
 		&:hover {
