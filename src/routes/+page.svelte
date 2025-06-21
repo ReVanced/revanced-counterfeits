@@ -117,7 +117,7 @@
 				<span class="good"><a href={websiteUrl}>ReVanced</a></span>.
 			</p>
 			<ul>
-				{#each ['vanced.io', 'revanced.net', 'revanced.dev', 'revanced.to', 'revancedextended.com', 'revancedextended.io', 'revancedapp.download', 'revancedapps.com', 'revancedapk.org', 'revancedapp.io', 'revancedapk.net'] as domain, i}
+				{#each  ['vanced.to', 'revanced.net', 'revanced.dev', 'revanced.to', 'revancedextended.com', 'revancedextended.io', 'revancedapp.download', 'revancedapps.com', 'revancedapk.org', 'revancedapp.io', 'revancedapk.net', 'vanced.io'] as domain, i}
 					<li>
 						<span class="bad">{domain}</span>
 						{#if ['revanced.net', 'revanced.dev'].includes(domain)}
