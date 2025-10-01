@@ -47,103 +47,86 @@
 	<div id="content">
 		<section class="hero">
 			<h1>
-				You may be a victim of<br />
-				<span class="good"><a href={websiteUrl}>ReVanced</a></span>
-				<span class="bad">counterfeit</span>
+				⚠️ <span class="bad">Security alert</span><br />
+				You visited a fake <span class="good"><a href={websiteUrl}>ReVanced</a></span> website
 			</h1>
-			<br />
+			<p class="hero-subtitle">
+				This page protects you from ReVanced counterfeits.
+				{#if referrer}
+					<br />You came from: <span class="probably-bad">{referrer}</span>
+				{/if}
+			</p>
+			<p class="hero-subtitle">
+				The only official ReVanced website is
+				<a href={websiteUrl}><span class="good">revanced.app</span></a>.
+			</p>
+			<div class="cta-button">
+				<a href={websiteUrl} class="official-btn"> 🔒 Go to the official ReVanced site </a>
+			</div>
+
+			<div class="tip-box">
+				<strong>💡 Proof:</strong> Always verify websites through their official social media.<br />
+				Check our links at the bottom of this page. <br />
+			</div>
+		</section>
+
+		<section class="urgent">
+			<h2>🚨 Downloaded anything? Take action immediately:</h2>
+			<ol class="action-steps">
+				<li>
+					<strong>Uninstall</strong> any ReVanced app not from
+					<a href={websiteUrl}><span class="good">revanced.app</span></a>
+				</li>
+				<li>
+					<strong>Change passwords</strong> for accounts you used while the fake app was installed
+				</li>
+				<li><strong>Run security scan</strong> on your device</li>
+				<li>
+					<strong>Get the real version</strong> from
+					<a href={websiteUrl}><span class="good">revanced.app</span></a>
+				</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2>What happened?</h2>
 			<p>
-				If you just landed on this page, you may have been redirected here from a
-				<span class="bad">counterfeit</span> website.
+				Some counterfeiters created fake ReVanced websites to impersonate <span class="good"
+					><a href={websiteUrl}>ReVanced</a></span
+				>, which has now legally acquired these domains and now redirects them here to warn users
+				like you.
+			</p>
+			<p class="highlight">
+				<strong>Bottom line:</strong> Only
+				<a href={websiteUrl}><span class="good">revanced.app</span></a> is the real ReVanced website.
 			</p>
 		</section>
 
 		<section>
-			<h2>What is going on?</h2>
-			<p>
-				Some counterfeiters have been trying to impersonate
-				<span class="good"><a href={websiteUrl}>ReVanced</a></span>
-				by creating fake websites and took advantage of this by creating
-				<span class="bad">counterfeit</span>
-				versions, which are designed to look official but are not.
-			</p>
-			<p>
-				<span class="good"><a href={websiteUrl}>ReVanced</a></span> has acquired a couple of domains
-				that were previously used by counterfeiters via a
-				<a href="https://www.wipo.int/amc/en/domains/guide/#What_is_the">
-					Uniform Domain Name Dispute Resolution
-				</a>.
-				<br />
-				The counterfeit domains are now redirecting to this page. If you were redirected here, it means
-				you may have been a victim of counterfeit.
-			</p>
-			<a href={websiteUrl}>
-				Visit the official website at <span class="good">{websiteUrl}</span>
-			</a>
-		</section>
-
-		<section>
-			<h2>Am I a victim?</h2>
-			<p>
-				If you are unsure whether you are a victim of counterfeit, here are some signs to look out
-				for:
-			</p>
+			<h2>How to tell if you're affected</h2>
+			<p><strong>You're at risk if you:</strong></p>
 			<ul>
 				<li>
-					You visited a counterfeit website that is not
-					<span class="good"><a href={websiteUrl}>revanced.app</a></span>
+					Visited any ReVanced site other than <span class="good"
+						><a href={websiteUrl}>revanced.app</a></span
+					>
 					{#if referrer}
-						(PS: You just came from <span class="probably-bad">{referrer}</span>)
-					{/if}.
+						(like <span class="probably-bad">{referrer}</span>)
+					{/if}
 				</li>
-				<li>
-					You downloaded ReVanced from any website
-					<strong>other than</strong>
-					<span class="good"><a href={websiteUrl}>revanced.app</a></span>.
-				</li>
-				<li>You used a pre-patched APK not obtained officially.</li>
+				<li>Downloaded ReVanced from an unofficial source</li>
+				<li>Used a pre-made ReVanced APK from anywhere else</li>
 			</ul>
-			<p>
-				Rule of thumb: You can gain trust for a website by checking its reputation on other
-				websites. If a website does not link any social media with legitimate activity, it is
-				probably <span class="bad">counterfeit</span>. If unsure, check the official links below.
-			</p>
 		</section>
 
 		<section>
-			<h2>Known counterfeits</h2>
-			<p>
-				These are the known counterfeit domains that have been used to impersonate
-				<span class="good"><a href={websiteUrl}>ReVanced</a></span>.
-			</p>
-			<ul>
-				{#each  ['vanced.to', 'revanced.net', 'revanced.dev', 'revanced.to', 'revancedextended.com', 'revancedextended.io', 'revancedapp.download', 'revancedapps.com', 'revancedapk.org', 'revancedapp.io', 'revancedapk.net', 'vanced.io'] as domain, i}
-					<li>
-						<span class="bad">{domain}</span>
-						{#if ['revanced.net', 'revanced.dev'].includes(domain)}
-							(Now redirects to <span class="good"><a href={websiteUrl}>revanced.app</a></span>)
-						{/if}
-					</li>
+			<h2>Known fake domains</h2>
+			<p>These domains were used by scammers (now redirecting here):</p>
+			<div class="domain-grid">
+				{#each ['vanced.to', 'revanced.net', 'revanced.dev', 'revanced.to', 'revancedextended.com', 'revancedextended.io', 'revancedapp.download', 'revancedapps.com', 'revancedapk.org', 'revancedapp.io', 'revancedapk.net', 'vanced.io'] as domain, i}
+					<span class="bad domain-tag">{domain}</span>
 				{/each}
-			</ul>
-		</section>
-
-		<section>
-			<h2>I downloaded counterfeit, what should I do?</h2>
-			<p>
-				If you downloaded a <span class="good"><a href={websiteUrl}>ReVanced</a></span> version from
-				one of the websites listed above or any unofficial source, you are strongly recommended to:
-			</p>
-			<ul>
-				<li>Uninstall the counterfeit version.</li>
-				<li>Change passwords for any accounts accessed while using the counterfeit app.</li>
-				<li>Run a full security check on your device and accounts.</li>
-				<li>
-					<a href={websiteUrl}>
-						Visit the official website at <span class="good">{websiteUrl}</span>
-					</a> and get the official version.
-				</li>
-			</ul>
+			</div>
 		</section>
 
 		<section>
@@ -189,6 +172,84 @@
 
 	.hero {
 		text-align: center;
+	}
+
+	.hero-subtitle {
+		font-size: 1.1rem;
+		margin: 1rem 0;
+		color: var(--text-four);
+	}
+
+	.cta-button {
+		margin-top: 1.5rem;
+	}
+
+	.official-btn {
+		display: inline-block;
+		background: hsl(calc(var(--hue, 206) + 0), 100%, 81%);
+		color: hsl(calc(var(--hue, 206) + 20), 48%, 18%);
+		font-size: 0.95rem;
+		text-decoration: none;
+		font-weight: bold;
+		border: none;
+		border-radius: 100px;
+		justify-content: center;
+		align-items: center;
+		gap: 0.5rem;
+		cursor: pointer;
+		transition:
+			transform 0.4s var(--bezier-one),
+			filter 0.4s var(--bezier-one);
+		-webkit-user-select: none;
+		user-select: none;
+		padding: 16px 24px;
+	}
+
+	.urgent {
+		border-left: 4px solid #ff4444;
+		background: linear-gradient(135deg, rgba(255, 68, 68, 0.1), rgba(255, 152, 0, 0.05));
+	}
+
+	.action-steps {
+		list-style: decimal;
+		padding-left: 1.5rem;
+
+		li {
+			margin: 0.8rem 0;
+			font-size: 1.05rem;
+		}
+	}
+
+	.highlight {
+		background: rgba(31, 98, 255, 0.1);
+		border: 1px solid rgba(31, 98, 255, 0.3);
+		border-radius: 6px;
+		padding: 1rem;
+		margin: 1rem 0;
+		text-align: center;
+	}
+
+	.tip-box {
+		background: rgba(255, 193, 7, 0.1);
+		border: 1px solid rgba(255, 193, 7, 0.3);
+		border-radius: 6px;
+		padding: 1rem;
+		margin-top: 1rem;
+	}
+
+	.domain-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+		gap: 0.5rem;
+		margin: 1rem 0;
+	}
+
+	.domain-tag {
+		display: block;
+		text-align: center;
+		padding: 0.4rem 0.8rem;
+		margin: 0.2rem;
+		font-size: 0.9rem;
 	}
 
 	#content {
