@@ -23,6 +23,14 @@
 	$effect(() => {
 		if (about)
 			websiteUrl = about.socials.find((socials) => socials.name.toLowerCase() == 'website')?.url;
+
+		if (websiteUrl) {
+			const url = new URL(websiteUrl);
+			if (referrer) {
+				url.searchParams.set('from', referrer);
+			}
+			websiteUrl = url.toString();
+		}
 	});
 
 	onMount(() => {
