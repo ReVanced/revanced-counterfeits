@@ -45,7 +45,7 @@
 
 <Embed
 	title="ReVanced - Counterfeit notice"
-	description="You may be a victim of ReVanced counterfeit. Learn more about it here."
+	description="You may be a victim of ReVanced counterfeits. Learn more about it here."
 	{websiteUrl}
 	image={`${websiteUrl}/logo.png`}
 	themeColor="#9FD5FF"
@@ -88,7 +88,7 @@
 				<li>
 					<strong>Change passwords</strong> for accounts you used while the fake app was installed
 				</li>
-				<li><strong>Run security scan</strong> on your device</li>
+				<li><strong>Run a security scan</strong> on your device</li>
 				<li>
 					<strong>Get the real version</strong> from
 					<a href={websiteUrl}><span class="good">revanced.app</span></a>
@@ -101,7 +101,7 @@
 			<p>
 				Some counterfeiters created fake ReVanced websites to impersonate <span class="good"
 					><a href={websiteUrl}>ReVanced</a></span
-				>, which has now legally acquired these domains and now redirects them here to warn users
+				>, which has now legally acquired some of these domains and now redirects them here to warn users
 				like you.
 			</p>
 			<p class="highlight">
@@ -129,9 +129,9 @@
 
 		<section>
 			<h2>Known fake domains</h2>
-			<p>These domains were used by scammers (now redirecting here):</p>
+			<p>These domains were used by scammers but are now owned by the ReVanced team (<span class="bad domain-tag">{ReVanced.net}</span><span class="bad domain-tag">{ReVanced.dev}</span>):</p>
 			<div class="domain-grid">
-				{#each ['vanced.to', 'revanced.net', 'revanced.dev', 'revanced.to', 'revancedextended.com', 'revancedextended.io', 'revancedapp.download', 'revancedapps.com', 'revancedapk.org', 'revancedapp.io', 'revancedapk.net', 'vanced.io'] as domain, i}
+				{#each ['vanced.to', 'revanced.net', 'revanced.dev', 'revanced.to', 'revancedextended.com', 'revancedextended.io', 'revancedapp.download', 'revancedapps.com', 'revancedapk.org', 'revancedapp.io', 'revancedapk.net', 'vanced.io', 'rvx.to', 'rvxapp.com', 'revancedextended.cc', 'vancedyoutube.org', 'vancedmanager.com', 'vanced.me', 'revancedyoutube.app', 'revanced.tools', 'youtubevanced.tools', 'youtubevanced.su', 'vanceddownload.com', 'revanced.org', 'revanceds.com','ytrevanced.com.co', 'youtubevanced.dev'] as domain, i}
 					<span class="bad domain-tag">{domain}</span>
 				{/each}
 			</div>
